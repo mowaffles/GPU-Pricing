@@ -68,6 +68,7 @@ def scraper(urlObj):
 				price = listing.find('span', attrs={'class':"s-item__price"})
 				prod_price = price.get_text()
 				prod_price = prod_price.replace("£","")
+				prod_price = prod_price.replace(",","")
 				prod_price = float(prod_price)
 				prices.append(prod_price)
 
@@ -131,12 +132,14 @@ def main():
 	GTX1070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_100736487?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 6]
 	RTX2060 = ["https://www.ebay.co.uk/b/Industrial-NVIDIA-GeForce-RTX-2060-Computer-Graphics-Video-Cards/27386/bn_7116613730?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 2]
 	RTX2070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116470210?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
+	RTX2080 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116471402?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
+	RTX2080Ti = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-Ti-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116466367?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 
-	#scraper(RTX2070)
-	readCSV("GTX1070.csv")
-	removeTi()
+	scraper(RTX2080Ti)
+	#readCSV("GTX1070.csv")
+	#removeTi()
 	printData()
-	#writeCSV("RTX2070.csv")
+	writeCSV("RTX2080Ti.csv")
 	graphing()
 
 main()
