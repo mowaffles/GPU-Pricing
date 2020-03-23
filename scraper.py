@@ -110,9 +110,11 @@ def graphing():
 	#Graphing
 	style.use('ggplot')
 	
+	dateString = str(dates[0] + " -- " + dates[len(dates)-1])
+
 	plt.subplot(211)
 	plt.plot(prices)
-	plt.xlabel("Date")
+	plt.xlabel(dateString)
 	plt.ylabel("Price (£)")
 
 	plt.subplot(212)
@@ -124,13 +126,17 @@ def printData():
 	pd.set_option('display.max_rows', len(item_name))
 	print (output)
 
-GTX1080url = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1080-Computer-Graphics-Video-Cards/27386/bn_100742202?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 4]
-GTX1070url = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_100736487?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 6]
-RTX2060url = ["https://www.ebay.co.uk/b/Industrial-NVIDIA-GeForce-RTX-2060-Computer-Graphics-Video-Cards/27386/bn_7116613730?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 2]
+def main():
+	GTX1080 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1080-Computer-Graphics-Video-Cards/27386/bn_100742202?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 4]
+	GTX1070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_100736487?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 6]
+	RTX2060 = ["https://www.ebay.co.uk/b/Industrial-NVIDIA-GeForce-RTX-2060-Computer-Graphics-Video-Cards/27386/bn_7116613730?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 2]
+	RTX2070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116470210?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 
-#scraper(GTX1070url)
-readCSV("GTX1070.csv")
-removeTi()
-printData()
-#writeCSV("GTX1070.csv")
-graphing()
+	#scraper(RTX2070)
+	readCSV("GTX1070.csv")
+	removeTi()
+	printData()
+	#writeCSV("RTX2070.csv")
+	graphing()
+
+main()
