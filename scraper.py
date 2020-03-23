@@ -103,6 +103,25 @@ def removeTi():
 		del prices[elem]
 		del dates[elem]
 
+def removeSuper():
+	global item_name
+	global prices
+	global dates
+	#Remove 1080Ti entries
+	toDelete = []
+	for i in range(0, len(item_name)):
+		if ( ((item_name[i]).find("Super") != -1) or ((item_name[i]).find("TI ") != -1) ):
+			#print(item_name[i])
+			toDelete.insert(0,i)
+		elif ( ((item_name[i]).find("SUPER") != -1) or ((item_name[i]).find("TI ") != -1) ):
+			#print(item_name[i])
+			toDelete.insert(0,i)
+	#toDelete = list(reversed(toDelete))	#Flip to avoid
+	for elem in toDelete:
+		del item_name[elem]
+		del prices[elem]
+		del dates[elem]
+
 def graphing():
 	global item_name
 	global prices
@@ -135,11 +154,12 @@ def main():
 	RTX2080 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116471402?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 	RTX2080Ti = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-Ti-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116466367?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 
-	scraper(RTX2080Ti)
-	#readCSV("GTX1070.csv")
-	#removeTi()
+	#scraper(RTX2080Ti)
+	readCSV("RTX2080.csv")
+	removeTi()
+	removeSuper()
 	printData()
-	writeCSV("RTX2080Ti.csv")
+	#writeCSV("RTX2080Ti.csv")
 	graphing()
 
 main()
