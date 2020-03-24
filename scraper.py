@@ -138,8 +138,11 @@ def graphing():
 	plt.ylabel("Price (£)")
 
 	plt.subplot(212)
-	plt.boxplot(prices, vert=False)
+	plt.boxplot(prices, vert=False, showmeans=True)
 	plt.show()
+
+	print("Median: £", np.median(prices))
+	print("Average: £", np.average(prices))
 
 def printData():
 	output = pd.DataFrame({"Name":item_name, "Prices": prices, "Date": dates})
@@ -147,19 +150,24 @@ def printData():
 	print (output)
 
 def main():
+	#Nvidia
 	GTX1080 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1080-Computer-Graphics-Video-Cards/27386/bn_100742202?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 4]
 	GTX1070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-GTX-1070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_100736487?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 6]
 	RTX2060 = ["https://www.ebay.co.uk/b/Industrial-NVIDIA-GeForce-RTX-2060-Computer-Graphics-Video-Cards/27386/bn_7116613730?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 2]
 	RTX2070 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2070-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116470210?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 	RTX2080 = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116471402?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
 	RTX2080Ti = ["https://www.ebay.co.uk/b/NVIDIA-GeForce-RTX-2080-Ti-NVIDIA-Computer-Graphics-Video-Cards/27386/bn_7116466367?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
-
-	#scraper(RTX2080Ti)
-	readCSV("RTX2080.csv")
+	#AMD
+	Vega64 = ["https://www.ebay.co.uk/b/AMD-Radeon-RX-Vega-64-AMD-Computer-Graphics-Video-Cards/27386/bn_7116470290?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 1]
+	Vega56 = ["https://www.ebay.co.uk/b/Graphics-Video-Cards/27386?Chipset%2520Manufacturer=AMD&Chipset%252FGPU%2520Model=AMD%2520Radeon%2520RX%2520Vega%252056&rt=nc&_sop=13&LH_ItemCondition=3000&LH_Sold=1&_pgn=", 1]
+	RX580 = ["https://www.ebay.co.uk/b/AMD-Radeon-RX-580-AMD-Computer-Graphics-Video-Cards/27386/bn_7116456277?LH_ItemCondition=3000&LH_Sold=1&rt=nc&_sop=13&_pgn=", 6]
+	
+	scraper(GTX1080)
+	#readCSV("CSV/GTX1070.csv")
 	removeTi()
 	removeSuper()
 	printData()
-	#writeCSV("RTX2080Ti.csv")
+	#writeCSV("CSV/RX580.csv")
 	graphing()
 
 main()
